@@ -1,0 +1,7 @@
+:If not(U):Then
+:ClrHome
+:Input "COST:",A
+:Input "PRICE PER KWH:",B
+:End
+:A/B->K
+:Disp "KWH",K,"KJ",K*3600,"MJ",K*3.6

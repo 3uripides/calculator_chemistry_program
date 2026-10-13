@@ -1,0 +1,12 @@
+:prgmPTAB
+:sub(Str1+"  ",1,2)->Str2
+:inString(Str9,Str2)->Z
+:While Z>0 and fPart(Z/2)=0
+:inString(Str9,Str2,Z+1)->Z
+:End
+:If Z>0:Then
+:(Z+1)/2->Z
+:L1(Z)->M
+:Else
+:0->M
+:End

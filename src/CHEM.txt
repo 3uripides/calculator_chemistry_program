@@ -1,0 +1,38 @@
+:0->U
+:Lbl M
+:ClrHome
+:Menu("CHEM 101","UNITS",A,"DENSITY",B,"MOLES",C,"ISOTOPES",D,"FORMULA RATIOS",E,"LIGHT",F,"MORE",G)
+:Lbl A
+:prgmUNITS
+:Goto X
+:Lbl B
+:prgmDENS
+:Goto X
+:Lbl C
+:prgmMOLES
+:Goto X
+:Lbl D
+:prgmISOTOPE
+:Goto X
+:Lbl E
+:prgmRATIO
+:Goto X
+:Lbl F
+:prgmLIGHT
+:Goto X
+:Lbl G
+:Menu("CHEM 101","BOHR MODEL",H,"ATOMS AND IONS",I,"ENERGY KWH",J,"MASS CONSERVATION",K,"BACK",M)
+:Lbl H
+:prgmBOHR
+:Goto X
+:Lbl I
+:prgmATOMS
+:Goto X
+:Lbl J
+:prgmENERGY
+:Goto X
+:Lbl K
+:prgmMASSC
+:Lbl X
+:Pause
+:Goto M

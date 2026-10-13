@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:6->A
+:2->B
+:prgmBOHR

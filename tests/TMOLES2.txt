@@ -1,0 +1,6 @@
+:1->U
+:ClrHome
+:4->K
+:20000->G
+:4.95|E26->P
+:prgmMOLES

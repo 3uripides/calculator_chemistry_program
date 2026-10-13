@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:1->K
+:1066->W
+:prgmLIGHT

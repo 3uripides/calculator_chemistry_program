@@ -1,0 +1,52 @@
+:If not(U):ClrHome
+:If U:Goto S
+:Menu("ISOTOPES","AVG MASS",1,"MISSING ISOTOPE",2,"ABUNDANCE %",3,"ATOMS OF ISOTOPE",4)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Goto S
+:Lbl 3
+:3->K
+:Goto S
+:Lbl 4
+:4->K
+:Lbl S
+:If K=1:Then
+:If not(U):Then
+:Input "MASS 1:",A
+:Input "PERCENT 1:",B
+:Input "MASS 2:",C
+:Input "PERCENT 2:",D
+:Input "MASS 3 OR 0:",E
+:Input "PERCENT 3 OR 0:",F
+:End
+:(A*B+C*D+E*F)/100->X
+:Disp "AVERAGE MASS",X
+:End
+:If K=2:Then
+:If not(U):Then
+:Input "AVERAGE MASS:",X
+:Input "KNOWN MASS:",A
+:Input "KNOWN PERCENT:",B
+:End
+:(X*100-A*B)/(100-B)->C
+:Disp "OTHER MASS",C,"OTHER PERCENT",100-B,"KNOWN CONTRIB",A*B/100,"OTHER CONTRIB",X-A*B/100
+:End
+:If K=3:Then
+:If not(U):Then
+:Input "AVERAGE MASS:",X
+:Input "ISOTOPE 1 MASS:",A
+:Input "ISOTOPE 2 MASS:",C
+:End
+:(X-C)/(A-C)*100->B
+:Disp "PERCENT OF 1",B,"PERCENT OF 2",100-B
+:End
+:If K=4:Then
+:If not(U):Then
+:Input "TOTAL ATOMS:",T
+:Input "PERCENT OF 1:",B
+:End
+:Disp "ATOMS OF 1",T*B/100,"ATOMS OF OTHER",T*(100-B)/100
+:End

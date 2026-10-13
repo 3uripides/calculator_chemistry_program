@@ -1,0 +1,24 @@
+:If not(U):ClrHome
+:If U:Goto S
+:Menu("MASS CONSERVATION","SUM REACTANTS",1,"FIND A REACTANT",2)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Lbl S
+:If K=1:Then
+:If not(U):Then
+:Input "REACTANT 1:",A
+:Input "REACTANT 2:",B
+:Input "REACTANT 3 OR 0:",C
+:End
+:Disp "PRODUCT MASS",A+B+C
+:End
+:If K=2:Then
+:If not(U):Then
+:Input "PRODUCT MASS:",P
+:Input "KNOWN REACTANTS:",A
+:End
+:Disp "MISSING MASS",P-A
+:End

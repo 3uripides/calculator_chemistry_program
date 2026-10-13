@@ -1,0 +1,27 @@
+:prgmPTAB
+:If not(U):ClrHome
+:If U:Goto S
+:Menu("ATOMS","PROTONS+NEUTRONS",1,"SYMBOL+MASS NO",2)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Lbl S
+:If K=1:Then
+:If not(U):Then
+:Input "PROTONS:",Z
+:Input "NEUTRONS:",N
+:Input "ELECTRONS:",E
+:End
+:Disp "ELEMENT",sub(Str9,2*Z-1,2),"MASS NUMBER",Z+N,"CHARGE",Z-E
+:End
+:If K=2:Then
+:If not(U):Then
+:Input "SYMBOL:",Str1
+:prgmELEM
+:Input "MASS NUMBER:",A
+:Input "CHARGE:",C
+:End
+:Disp "PROTONS",Z,"NEUTRONS",A-Z,"ELECTRONS",Z-C
+:End

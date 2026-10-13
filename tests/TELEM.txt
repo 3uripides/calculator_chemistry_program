@@ -1,0 +1,16 @@
+:ClrHome
+:"FE"->Str1
+:prgmELEM
+:Disp Z,M
+:"H"->Str1
+:prgmELEM
+:Disp Z,M
+:"CU"->Str1
+:prgmELEM
+:Disp Z,M
+:"N"->Str1
+:prgmELEM
+:Disp Z,M
+:"XX"->Str1
+:prgmELEM
+:Disp Z,M

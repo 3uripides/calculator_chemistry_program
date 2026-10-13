@@ -1,0 +1,7 @@
+:1->U
+:ClrHome
+:1->K
+:24->Z
+:32->N
+:24->E
+:prgmATOMS

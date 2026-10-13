@@ -1,0 +1,13 @@
+:If not(U):Then
+:ClrHome
+:Input "START N:",A
+:Input "END N:",B
+:End
+:2.18|E~18->R
+:6.63|E~34->H
+:3|E8->C
+:~R*(1/B^2-1/A^2)->D
+:Disp "DELTA E (J)",D
+:If D<0:Disp "RELEASED"
+:If D>0:Disp "ABSORBED"
+:Disp "WAVELENGTH NM",H*C/abs(D)*1|E9,"FREQUENCY HZ",abs(D)/H

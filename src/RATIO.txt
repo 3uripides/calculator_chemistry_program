@@ -1,0 +1,52 @@
+:prgmPTAB
+:If not(U):ClrHome
+:If U:Goto S
+:Menu("RATIOS","MASSES TO FORMULA",1,"MASS RATIO",2)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Lbl S
+:If K=1:Then
+:If not(U):Then
+:Disp "ELEMENT 1"
+:prgmGETM
+:M->A
+:Str1->Str4
+:Input "GRAMS 1:",G
+:Disp "ELEMENT 2"
+:prgmGETM
+:M->C
+:Str1->Str5
+:Input "GRAMS 2:",H
+:End
+:G/A->B
+:H/C->D
+:B/min(B,D)->R
+:D/min(B,D)->S
+:0->Z
+:For(I,1,8)
+:If Z=0 and abs(R*I-round(R*I,0))<.05 and abs(S*I-round(S*I,0))<.05:I->Z
+:End
+:If Z=0:1->Z
+:Disp "MOLES 1",B,"MOLES 2",D,"RATIO 1",R,"RATIO 2",S,"WHOLE NUMBERS",round(R*Z,0),round(S*Z,0)
+:End
+:If K=2:Then
+:If not(U):Then
+:Input "MOLAR MASS 1:",A
+:Input "SUBSCRIPT 1:",B
+:Input "MOLAR MASS 2:",C
+:Input "SUBSCRIPT 2:",D
+:End
+:A*B/(C*D)->R
+:0->P
+:0->Q
+:For(I,1,12)
+:If P=0 and abs(R-round(R*I,0)/I)<.005*R:Then
+:round(R*I,0)->P
+:I->Q
+:End
+:End
+:Disp "MASS 1 / MASS 2",R,"SIMPLE RATIO",P,Q
+:End

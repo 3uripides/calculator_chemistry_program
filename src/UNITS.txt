@@ -1,0 +1,10 @@
+:If not(U):Then
+:ClrHome
+:Disp "POWERS OF 10:","K=3 C=-2 M=-3","U=-6 N=-9 P=-12","BASE UNIT=0"
+:Input "VALUE:",V
+:Input "FROM POWER:",A
+:Input "TO POWER:",B
+:Input "UNIT EXP 1,2,3:",E
+:End
+:V*10^(E*(A-B))->R
+:Disp "RESULT",R

@@ -1,0 +1,10 @@
+:Input "ELEMENT OR 0:",Str1
+:If Str1="0":Then
+:Input "MOLAR MASS:",M
+:Return
+:End
+:prgmELEM
+:If M=0:Then
+:Disp "UNKNOWN ELEMENT"
+:Input "MOLAR MASS:",M
+:End

@@ -1,0 +1,6 @@
+:1->U
+:ClrHome
+:4->K
+:1|E10->T
+:75.77->B
+:prgmISOTOPE

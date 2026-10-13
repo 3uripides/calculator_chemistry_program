@@ -1,0 +1,36 @@
+:If not(U):ClrHome
+:If U:Goto S
+:Menu("LIGHT","WAVELENGTH NM",1,"FREQUENCY HZ",2,"KJ PER MOL",3)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Goto S
+:Lbl 3
+:3->K
+:Lbl S
+:6.63|E~34->H
+:3|E8->C
+:6.022|E23->A
+:If not(U):Then
+:If K=1:Input "WAVELENGTH NM:",W
+:If K=2:Input "FREQUENCY HZ:",F
+:If K=3:Input "KJ PER MOL:",Q
+:End
+:If K=1:Then
+:W*1|E~9->W
+:C/W->F
+:H*F->E
+:End
+:If K=2:Then
+:C/F->W
+:H*F->E
+:End
+:If K=3:Then
+:Q*1000/A->E
+:E/H->F
+:C/F->W
+:End
+:Disp "WAVELENGTH NM",W*1|E9,"FREQUENCY HZ",F,"PHOTON J",E,"KJ PER MOL",E*A/1000
+:If K=3:Disp "OR SHORTER"

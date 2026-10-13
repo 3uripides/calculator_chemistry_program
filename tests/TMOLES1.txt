@@ -1,0 +1,6 @@
+:1->U
+:ClrHome
+:3->K
+:4.78|E22->P
+:1->M
+:prgmMOLES

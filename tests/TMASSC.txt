@@ -1,0 +1,7 @@
+:1->U
+:ClrHome
+:1->K
+:1.5->A
+:12->B
+:0->C
+:prgmMASSC

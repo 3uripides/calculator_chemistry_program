@@ -1,0 +1,59 @@
+:prgmPTAB
+:If not(U):ClrHome
+:If U:Goto S
+:Menu("MOLES","FROM GRAMS",1,"FROM MOLES",2,"FROM ATOMS",3,"IDENTIFY",4,"SAME ATOMS",5)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Goto S
+:Lbl 3
+:3->K
+:Goto S
+:Lbl 4
+:4->K
+:Goto S
+:Lbl 5
+:5->K
+:Lbl S
+:6.022|E23->A
+:If K=4:Goto I
+:If K=5:Goto Q
+:If not(U):Then
+:prgmGETM
+:If K=1:Input "GRAMS:",G
+:If K=2:Input "MOLES:",N
+:If K=3:Input "ATOMS:",P
+:End
+:If K=1:G/M->N
+:If K=3:P/A->N
+:If K>1:N*M->G
+:If K<3:N*A->P
+:Disp "GRAMS",G,"MOLES",N,"MILLIMOLES",N*1000,"ATOMS",P,"1 ATOM (G)",M/A
+:Return
+:Lbl I
+:If not(U):Then
+:Input "GRAMS:",G
+:Input "ATOMS:",P
+:End
+:G*A/P->M
+:abs(L1-M)->L2
+:1->Z
+:For(I,1,86)
+:If L2(I)=min(L2):I->Z
+:End
+:Disp "MOLAR MASS",M,"CLOSEST ELEMENT",sub(Str9,2*Z-1,2),L1(Z)
+:Return
+:Lbl Q
+:If not(U):Then
+:Disp "GIVEN ELEMENT"
+:prgmGETM
+:M->B
+:Input "GRAMS:",G
+:Disp "FIND ELEMENT"
+:prgmGETM
+:M->C
+:End
+:G/B*C->R
+:Disp "GRAMS OF 2ND",R,"MOLES",G/B
