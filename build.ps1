@@ -1,4 +1,4 @@
-# Converts src/*.txt (TI-BASIC text) into build/*.8xp for the TI-84 Plus CE.
+# Converts src/*.txt into build/send/*.8xp and tests/*.txt into build/tests/*.8xp for the TI-84 Plus CE.
 # Tokens come from tokens/8X.xml (TI-Toolkit). Write source as the calculator's editor shows it
 # (e.g. `Disp "HI"`, `inString(`); longest match wins. Unknown text throws.
 $ErrorActionPreference = 'Stop'
@@ -50,7 +50,7 @@ function Convert-Line([string]$s) {
   ,$out.ToArray()
 }
 
-New-Item -ItemType Directory -Force "$root\build" | Out-Null
+New-Item -ItemType Directory -Force "$root\build\send", "$root\build\tests" | Out-Null
 foreach ($f in (Get-ChildItem "$root\src\*.txt", "$root\tests\*.txt" -ErrorAction SilentlyContinue)) {
   $script:multi = New-Object 'System.Collections.Generic.HashSet[string]'
   $name = $f.BaseName.ToUpper()
@@ -71,6 +71,7 @@ foreach ($f in (Get-ChildItem "$root\src\*.txt", "$root\tests\*.txt" -ErrorActio
   $hdr = [Text.Encoding]::ASCII.GetBytes('**TI83F*') + [byte[]](0x1A,0x0A,0x00) +
          [Text.Encoding]::ASCII.GetBytes('Built by build.ps1'.PadRight(42,[char]0))[0..41]
   $all = $hdr + [byte[]](($entry.Count -band 0xFF), ($entry.Count -shr 8)) + $entry.ToArray() + [byte[]](($sum -band 0xFF), ($sum -shr 8))
-  [IO.File]::WriteAllBytes("$root\build\$name.8xp", [byte[]]$all)
-  "Built build\$name.8xp ($($tok.Count) token bytes)" + $(if ($script:multi.Count) { "  [words: $($script:multi -join ' ')]" })
+  $sub = if ($f.Directory.Name -eq 'tests') { 'tests' } else { 'send' }
+  [IO.File]::WriteAllBytes("$root\build\$sub\$name.8xp", [byte[]]$all)
+  "Built build\$sub\$name.8xp ($($tok.Count) token bytes)" + $(if ($script:multi.Count) { "  [words: $($script:multi -join ' ')]" })
 }

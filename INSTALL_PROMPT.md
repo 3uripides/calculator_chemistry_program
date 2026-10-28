@@ -18,7 +18,7 @@ Keep answers short. Number the steps. Write calculator keys in brackets: `[PRGM]
 ## FACTS ABOUT THE PROGRAM
 
 - Repo: https://github.com/3uripides/calculator_chemistry_program
-- Compiled programs are in the `build/` folder as `.8xp` files: https://github.com/3uripides/calculator_chemistry_program/tree/main/build
+- Compiled programs are in the `build/send/` folder as `.8xp` files: https://github.com/3uripides/calculator_chemistry_program/tree/main/build/send
 - Made for the **TI-84 Plus CE family only** (CE, CE-T, CE Python). The older TI-84 Plus / Silver Edition and TI-83 are not supported.
 - `CHEM` is the main program (it shows the menu). It calls the others, so **all 22 of these files must be on the calculator**, with these exact names:
 
@@ -39,7 +39,7 @@ Ask, in one message:
 ## STEP 1: GET THE FILES
 
 1. Go to the repo link above.
-2. Click the green **Code** button, then **Download ZIP**, then unzip it. The `.8xp` files are in the `build` folder.
+2. Click the green **Code** button, then **Download ZIP**, then unzip it. The `.8xp` files are in the `build/send` folder.
 3. Copy the 22 needed files into one easy-to-find folder (e.g. Desktop/CHEM). Ignore the `T*` test files and the `send` subfolder.
 
 ## STEP 2: INSTALL TI CONNECT CE

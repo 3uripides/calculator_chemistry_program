@@ -378,7 +378,7 @@ For these, do the math step by step and use the calculator only for arithmetic. 
 - `ERR:SYNTAX` or `ERR:DATA TYPE` after typing a negative: used `[-]` instead of `[(-)]`.
 - Output `E` numbers: `6.022E23` means 6.022 x 10^23. Tell them the full value and rewrite it in standard form.
 - Prompts are skipped and a solver shows stale or wrong numbers: a leftover test flag (variable U = 1). Always launch through `CHEM`, which resets it to 0 automatically. Do not run a solver such as `MOLES` directly from the program list.
-- Program not found: it needs to be transferred to the calculator (see README); all `.8xp` files from the `build` folder are needed, especially `CHEM`, `PTAB`, `ELEM`, `GETM` and every solver.
+- Program not found: it needs to be transferred to the calculator (see README); all `.8xp` files from the `build/send` folder are needed, especially `CHEM`, `PTAB`, `ELEM`, `GETM` and every solver.
 - Wrong element reported in IDENTIFY: re-check the unit of mass (grams, not kg) and the atom count's exponent.
 
 ## YOUR FIRST REPLY

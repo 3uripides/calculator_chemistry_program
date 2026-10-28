@@ -30,7 +30,7 @@ Constants: h = 6.63E-34, c = 3E8, N_A = 6.022E23, Rydberg energy 2.18E-18 J (fro
 - `INSTALL_PROMPT.md` paste into any LLM for step-by-step help installing the programs on your calculator and fixing install problems
 - `TEACHER_PROMPT.md` paste into any LLM to turn it into a tutor for this program
 - `src/*.txt` programs, `tests/*.txt` test programs, `tokens/8X.xml` official token table
-- `build.ps1` compiles both into `build/*.8xp`; write source as the calculator editor shows it (`Disp "HI"`, `~` for the negative sign, `|E` for scientific notation, `->` for store). The build prints any multi-letter tokens it matched so accidental ones are visible.
+- `build.ps1` compiles both into `build/send/*.8xp` (programs to put on the calculator) and `build/tests/*.8xp` (test programs, CEmu only); write source as the calculator editor shows it (`Disp "HI"`, `~` for the negative sign, `|E` for scientific notation, `->` for store). The build prints any multi-letter tokens it matched so accidental ones are visible.
 - `test.ps1 TNAME...` boots CEmu with the ROM, sends all programs, runs each test, saves `docs/TNAME.png`
 - `New folder/thing.rom` ROM dumped from the calculator (gitignored, never commit)
 

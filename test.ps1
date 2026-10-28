@@ -10,11 +10,11 @@ Get-Process CEmu -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Slee
 Start-Process $exe -ArgumentList '--id','cemu','--no-state','--rom',"`"$root\New folder\thing.rom`""; Start-Sleep 10
 $first = $true
 foreach ($p in (Get-ChildItem "$root\src\*.txt" | ForEach-Object { $_.BaseName.ToUpper() })) {
-  $a = @('--id','cemu'); if (-not $first) { $a += '--no-reset' }; $a += '--send'; $a += "$root\build\$p.8xp"
+  $a = @('--id','cemu'); if (-not $first) { $a += '--no-reset' }; $a += '--send'; $a += "$root\build\send\$p.8xp"
   Cmd $a; Start-Sleep ($(if ($first) { 5 } else { 2 })); $first = $false
 }
 foreach ($n in $args) {
-  Cmd @('--id','cemu','--no-reset','--send',"$root\build\$n.8xp"); Start-Sleep 2
+  Cmd @('--id','cemu','--no-reset','--send',"$root\build\tests\$n.8xp"); Start-Sleep 2
   Cmd @('--id','cemu','--launch',$n); Start-Sleep 5
   Cmd @('--id','cemu','--screenshot',"$root\docs\$n.png"); Start-Sleep 2
   "docs\$n.png"
