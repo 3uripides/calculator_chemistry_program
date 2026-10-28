@@ -1,4 +1,4 @@
-:prgmPTAB
+:If dim(L1)!=86 or dim(L3)!=86:prgmPTAB
 :sub(Str1+"  ",1,2)->Str2
 :inString(Str9,Str2)->Z
 :While Z>0 and fPart(Z/2)=0

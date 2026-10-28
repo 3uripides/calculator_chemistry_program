@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:2->G
+:"CA AL I CL"->Str6
+:prgmTREND

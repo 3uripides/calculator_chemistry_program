@@ -1,0 +1,6 @@
+:1->U
+:ClrHome
+:2->K
+:"KR"->Str1
+:13->D
+:prgmCONFIG

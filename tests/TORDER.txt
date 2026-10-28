@@ -1,0 +1,4 @@
+:1->U
+:ClrHome
+:"2S 1S 2P 3D 4S 3P 3S"->Str1
+:prgmORDER

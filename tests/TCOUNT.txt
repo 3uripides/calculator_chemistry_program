@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:4->N
+:"F"->Str1
+:prgmCOUNT

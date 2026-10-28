@@ -1,0 +1,87 @@
+:If dim(L4)!=16:Then
+:16->dim(L4)
+:16->dim(L5)
+:0->K
+:For(S,1,7)
+:For(N,1,S)
+:If S-N<N:Then
+:K+1->K
+:N->L4(K)
+:S-N->L5(K)
+:End
+:End
+:End
+:End
+:seq(0,I,1,16)->L2
+:Z-Q->E
+:max(Z,E)->F
+:For(K,1,16)
+:min(F,4*L5(K)+2)->L2(K)
+:F-L2(K)->F
+:End
+:0->D
+:If Q>=0 and sum(Z={24,29}):Then
+:6->A
+:7->B
+:1->D
+:End
+:If Q>=0 and sum(Z={41,42,44,45,47}):Then
+:9->A
+:10->B
+:1->D
+:End
+:If Q>=0 and Z=46:Then
+:9->A
+:10->B
+:2->D
+:End
+:If Q>=0 and sum(Z={57,58,64}):Then
+:13->A
+:14->B
+:1->D
+:End
+:If Q>=0 and sum(Z={78,79}):Then
+:12->A
+:14->B
+:1->D
+:End
+:If D:Then
+:L2(A)-D->L2(A)
+:L2(B)+D->L2(B)
+:End
+:For(I,1,Q)
+:0->T
+:For(K,1,16)
+:If L2(K) and 10*L4(K)+L5(K)>T:Then
+:10*L4(K)+L5(K)->T
+:K->R
+:End
+:End
+:L2(R)-1->L2(R)
+:End
+:max(L4*(L2>0))->P
+:sum(L2*(L4=P))->S
+:sum(L2*(L4=P-1))->N
+:S+sum(L2*(L4=P-1)*(L5=2)*(L2<10))->V
+:sum(min(L2,4*L5+2-L2))->X
+:Z-(.35*(S-1)+.85*N+E-S-N)->Y
+:" "->Str3
+:" "->Str4
+:0->R
+:0->B
+:0->T
+:For(K,1,16)
+:T+4*L5(K)+2->T
+:If (K=1 or L5(K)=1) and sum(L2,1,K)=T:Then
+:K->B
+:T->R
+:End
+:End
+:For(K,1,16)
+:If L2(K):Then
+:toString(L4(K))+sub("SPDF",L5(K)+1,1)+toString(L2(K))+" "->Str0
+:Str3+Str0->Str3
+:If K>B:Str4+Str0->Str4
+:End
+:End
+:If B:"["+sub(Str9,2*R-1,2)+"]"+Str4->Str4

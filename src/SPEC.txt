@@ -1,0 +1,19 @@
+:inString(Str6," ",J)->T
+:If T=J:Then
+:T+1->J
+:0->Z
+:Return
+:End
+:sub(Str6,J,T-J)->Str7
+:T+1->J
+:1+(inString("ABCDEFGHIJKLMNOPQRSTUVWXYZ",sub(Str7+" ",2,1))>0)->L
+:sub(Str7,1,L)->Str1
+:prgmELEM
+:0->Q
+:If length(Str7)>L:Then
+:sub(Str7,L+1,length(Str7)-L)->Str8
+:inString("+-",sub(Str8,length(Str8),1))->W
+:1->R
+:If length(Str8)>1:inString("0123456789",sub(Str8,1,1))-1->R
+:R*(3-2*W)*(W>0)->Q
+:End

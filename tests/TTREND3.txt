@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:3->G
+:"N C O F BE"->Str6
+:prgmTREND

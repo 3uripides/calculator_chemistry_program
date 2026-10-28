@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:1->G
+:"SC3+ CA2+ K+ CL- AR"->Str6
+:prgmTREND

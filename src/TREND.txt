@@ -1,0 +1,47 @@
+:prgmPTAB
+:If U:Goto S
+:Menu("TRENDS","SIZE",1,"IONIZATION E",2,"ZEFF",3)
+:Lbl 1
+:1->G
+:Goto S
+:Lbl 2
+:2->G
+:Goto S
+:Lbl 3
+:3->G
+:Lbl S
+:If not(U):Then
+:ClrHome
+:Disp "E.G. K+ CL- AR CA2+"
+:Input "SPECIES:",Str6
+:End
+:Str6+" "->Str6
+:1->J
+:0->C
+:" "->Str5
+:seq(1|E99,I,1,8)->L6
+:While J<length(Str6) and C<8
+:prgmSPEC
+:If Z>0:Then
+:C+1->C
+:prgmCFG
+:If G=1:P*100+50/Y->L6(C)
+:If G=2:L3(Z)->L6(C)
+:If G=3:Y->L6(C)
+:If G=1:"N"+toString(P)+" Z"+toString(round(Y,2))->Str0
+:If G=2:toString(L3(Z))+" KJ"->Str0
+:If G=3:toString(round(Y,2))->Str0
+:Str5+sub(Str7+"      ",1,6)+sub(Str0+"          ",1,10)->Str5
+:End
+:End
+:ClrHome
+:If G=1:Disp "SMALLEST>LARGEST","N=SHELL Z=ZEFF"
+:If G=2:Disp "LOWEST>HIGHEST IE1","(ATOMS, IGNORES CHARGE)"
+:If G=3:Disp "WEAKEST>STRONGEST"
+:For(I,1,C)
+:For(K,1,C)
+:If L6(K)=min(L6):K->N
+:End
+:Disp sub(Str5,16*N-14,16)
+:1|E99->L6(N)
+:End

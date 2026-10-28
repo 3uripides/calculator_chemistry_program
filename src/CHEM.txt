@@ -21,7 +21,7 @@
 :prgmLIGHT
 :Goto X
 :Lbl G
-:Menu("CHEM 101","BOHR MODEL",H,"ATOMS AND IONS",I,"ENERGY KWH",J,"MASS CONSERVATION",K,"BACK",M)
+:Menu("CHEM 101","BOHR MODEL",H,"ATOMS AND IONS",I,"ENERGY KWH",J,"MASS CONSERVATION",K,"EXAM 2 TOOLS",Y,"BACK",M)
 :Lbl H
 :prgmBOHR
 :Goto X
@@ -33,6 +33,26 @@
 :Goto X
 :Lbl K
 :prgmMASSC
+:Goto X
+:Lbl Y
+:Menu("EXAM 2","CONFIG",L,"SUBSHELL COUNT",N,"ENERGY ORDER",O,"TRENDS",P,"IE JUMP",Q,"FORMULA MOLES",R,"BACK",M)
+:Lbl L
+:prgmCONFIG
+:Goto X
+:Lbl N
+:prgmCOUNT
+:Goto X
+:Lbl O
+:prgmORDER
+:Goto X
+:Lbl P
+:prgmTREND
+:Goto X
+:Lbl Q
+:prgmIEJUMP
+:Goto X
+:Lbl R
+:prgmFORM
 :Lbl X
 :Pause
 :Goto M

@@ -10,6 +10,8 @@ $forced = New-Object 'System.Collections.Generic.HashSet[string]' ([StringCompar
 # Several tokens share a name (e.g. "T" is also the transpose token). Letters/digits get their plain ASCII-code
 # token, lowercase gets the BBxx token, otherwise the shortest token wins, then the first one in the file.
 function Put([string]$n, [byte[]]$b) {
+  # "Pause " etc. carry a trailing space in the table; also accept the bare word (e.g. `Pause` at end of line)
+  $t = $n.TrimEnd(); if ($t.Length -gt 1 -and $t.Length -lt $n.Length) { Put $t $b }
   if ($n.Length -eq 1 -and $n -cmatch '^[A-Z0-9]$' -and $b.Length -eq 1 -and $b[0] -eq [byte][char]$n) { $Tbl[$n] = $b; [void]$forced.Add($n); return }
   if (-not $Tbl.ContainsKey($n)) { $Tbl[$n] = $b; return }
   if ($forced.Contains($n)) { return }

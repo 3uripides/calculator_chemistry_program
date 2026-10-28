@@ -1,0 +1,12 @@
+:If not(U):Then
+:ClrHome
+:Input "SHELL N:",N
+:Input "SUBSHELL OR 0:",Str1
+:End
+:Disp "SUBSHELLS "+toString(N),"ORBITALS "+toString(N^2),"MAX E- "+toString(2*N^2)
+:inString("SPDF",Str1)->L
+:If L:Then
+:L-1->L
+:Disp "SUBSHELL ORBITALS "+toString(2*L+1),"SUBSHELL MAX E- "+toString(4*L+2)
+:If L>=N:Disp "NOT IN THIS SHELL"
+:End

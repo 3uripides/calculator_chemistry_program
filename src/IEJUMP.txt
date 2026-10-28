@@ -1,0 +1,30 @@
+:prgmPTAB
+:If not(U):Then
+:ClrHome
+:Disp "KJ OR MJ PER MOL"
+:Input "IE LIST {A,B,C}:",L6
+:End
+:dim(L6)->C
+:0->T
+:For(I,1,C-1)
+:If L6(I+1)/L6(I)>T:Then
+:L6(I+1)/L6(I)->T
+:I->J
+:End
+:End
+:L6(1)->G
+:If G<100:1000*G->G
+:0->W
+:0->H
+:While not(W) and H<12
+:H+1->H
+:min(abs(L3-G))->T
+:For(K,1,86)
+:If abs(L3(K)-G)=T:K->Z
+:End
+:0->Q
+:prgmCFG
+:If V=J:1->W
+:1|E9->L3(Z)
+:End
+:Disp "BIG JUMP AFTER IE "+toString(J),"VALENCE E- "+toString(J),"ELEMENT "+sub(Str9,2*Z-1,2)

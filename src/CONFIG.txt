@@ -1,0 +1,75 @@
+:prgmPTAB
+:If not(U):ClrHome
+:If U:Goto S
+:Menu("CONFIG","ATOM OR ION",1,"FIND ELEMENT",2)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Lbl S
+:If K=1:Then
+:If not(U):Then
+:Disp "E.G. AS FE3+ CL-"
+:Input "SPECIES:",Str6
+:End
+:Str6+" "->Str6
+:1->J
+:prgmSPEC
+:End
+:If K=2:Then
+:If not(U):Then
+:Input "NOBLE GAS OR 0:",Str1
+:Input "E- AFTER IT:",D
+:End
+:If Str1="0":Then
+:0->Z
+:Else
+:prgmELEM
+:End
+:Z+D->Z
+:0->Q
+:End
+:If Z<1 or Z>86:Then
+:Disp "UNKNOWN ELEMENT"
+:Return
+:End
+:prgmCFG
+:If U<2:Then
+:ClrHome
+:Disp sub(Str9,2*Z-1,2)+" Z="+toString(Z)+" Q="+toString(Q)+" E="+toString(E),"FULL"
+:For(I,1,length(Str3),24)
+:Disp sub(Str3,I,min(24,length(Str3)-I+1))
+:End
+:Disp "SHORT"
+:For(I,1,length(Str4),24)
+:Disp sub(Str4,I,min(24,length(Str4)-I+1))
+:End
+:Pause
+:End
+:ClrHome
+:If Q:Then
+:Disp "SHELLS "+toString(P)+"  UNPAIRED "+toString(X)
+:Else
+:Disp "SHELLS "+toString(P)+"  VALENCE E- "+toString(V)
+:Disp "CORE E- "+toString(E-V)+"  UNPAIRED "+toString(X)
+:End
+:If E=2 or E=10 or E=18 or E=36 or E=54 or E=86:Disp "ISOELECTRONIC WITH",sub(Str9,2*E-1,2)
+:If not(Q):Then
+:If sum(L2*(L4=P-1)*(L5=2)*(L2<10)):Then
+:Disp "TRANSITION METAL"
+:Else
+:Disp "LIKELY ION "+toString((V<=3)*V+(V>3)*(V-8))
+:End
+:End
+:For(K,1,16)
+:If L2(K) and (L4(K)=P or (L5(K)=2 and L4(K)=P-1 and L2(K)<10)):Then
+:L2(K)->D
+:2*L5(K)+1->S
+:toString(L4(K))+sub("SPDF",L5(K)+1,1)+" "->Str0
+:For(I,1,S)
+:Str0+"["+sub(" ^",(D>I-1)+1,1)+sub(" V",(D-S>I-1)+1,1)+"]"->Str0
+:End
+:Disp Str0
+:End
+:End

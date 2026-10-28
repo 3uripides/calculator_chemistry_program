@@ -1,0 +1,20 @@
+:If not(U):Then
+:ClrHome
+:Disp "E.G. 2S 1S 2P 3D 4S"
+:Input "SUBSHELLS:",Str1
+:End
+:Str1+" "->Str1
+:length(Str1)/3->C
+:seq(0,I,1,C)->L6
+:For(K,1,C)
+:inString("123456789",sub(Str1,3*K-2,1))->N
+:inString("SPDF",sub(Str1,3*K-1,1))->L
+:10*(N+L-1)+N->L6(K)
+:End
+:SortA(L6)
+:" "->Str2
+:For(K,1,C)
+:round(10*fPart(L6(K)/10),0)->N
+:Str2+toString(N)+sub("SPDF",iPart(L6(K)/10)-N+1,1)+"<"->Str2
+:End
+:Disp sub(Str2,2,length(Str2)-2)

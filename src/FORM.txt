@@ -1,0 +1,32 @@
+:If U:Goto S
+:ClrHome
+:Disp "BUILD MOLAR MASS"
+:0->T
+:1->W
+:While W=1
+:prgmGETM
+:Input "SUBSCRIPT:",S
+:T+M*S->T
+:Input "MORE PARTS? 1=YES",W
+:End
+:T->M
+:Disp "MOLAR MASS",M
+:Menu("GIVEN","MOLES",1,"GRAMS",2,"MOLECULES",3)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Goto S
+:Lbl 3
+:3->K
+:Lbl S
+:If not(U):Then
+:Input "AMOUNT:",X
+:Input "ATOMS PER MOLECULE:",S
+:End
+:6.022|E23->A
+:If K=1:X->N
+:If K=2:X/M->N
+:If K=3:X/A->N
+:Disp "MOLES "+toString(N),"MOLECULES "+toString(N*A),"GRAMS "+toString(N*M),"MOL ATOM "+toString(N*S),"ATOMS "+toString(N*S*A)
