@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:7->K
+:"Ca(NO3)2"->Str0
+:prgmIONS

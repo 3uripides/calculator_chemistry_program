@@ -26,15 +26,18 @@ Run `CHEM` on the calculator for the menu. It calls one solver per problem type.
 ## Navigation
 
 ```
-CHEM
-+- BASICS      UNITS, DENSITY, ENERGY KWH, MASS CONSERV, BACK
-+- MOLES       MOLES+ATOMS, FORMULA MOLES, FORMULA RATIO, BACK
-+- ATOMS       ATOMS+IONS, ISOTOPES, TRENDS, IE JUMP, BACK
-+- LIGHT       LIGHT, BOHR MODEL, BACK
-+- ELECTRONS   CONFIG, SUBSHELL COUNT, ENERGY ORDER, BACK
-+- EXAM 3      (placeholder, BACK)
+CHEM  "I NEED" (answer first), then "I HAVE" (your data)
++- AMOUNT MOL G #      GRAMS, MILLIGRAMS, MOLES, MMOL, FORMULA UNITS, ATOMS OR IONS (IONS; shows mol, mmol, g, particles)
++- MOLAR MASS / %      MOLAR MASS (IONS K=7), % OF EACH ELEM, G OF ELEMENT (PCT), MASSES TO FORMULA, ATOMS IN COMPOUND
++- MASS VOL DENSITY    DENSITY: M AND V / DISPLACE, MASS: D AND V, VOLUME: M AND D (DENS), MASS CONSERV, SAME ATOMS
++- ATOM / ELEMENT      P N E COUNTS, SYMBOL+MASS NO, ID: GRAMS+ATOMS, ISOTOPES, TRENDS, IE JUMP
++- LIGHT ENERGY UNITS  LIGHT: WAVELENGTH / FREQUENCY / KJ/MOL, BOHR N TO N, KWH FROM COST, UNIT CONVERT
++- ELECTRONS BONDS     CONFIG, SUBSHELL COUNT, ENERGY ORDER, VALENCE E-, BOND TOOLS, DISSOLVE
 +- QUIT
 ```
+
+Preset mode: CHEM sets `K` before every solver call (0 = the solver shows its own menu, as before). DENS, IONS, PCT, LIGHT, ATOMS and MOLES use `If U or K:Goto S` to skip their menu when K is nonzero, and their first prompt accepts 0 (or "0") as BACK. IONS K=7 is molar mass only.
+Example, "mmol of Ca(NO3)2 in 4.78E22 formula units": AMOUNT, FORMULA UNITS, formula `Ca(NO3)2`, ion 0, amount 4.78E22, 0.
 
 Back convention (TI-BASIC has no comments, so it is documented here):
 - Every Menu ends with BACK (main menu: QUIT). In a solver, BACK is `"BACK",0` pointing at `Lbl 0 : ~1->U : Return` placed just before `Lbl S`.

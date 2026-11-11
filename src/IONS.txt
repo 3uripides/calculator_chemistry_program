@@ -1,4 +1,4 @@
-:If U:Goto S
+:If U or K:Goto S
 :ClrHome
 :Menu("IONS","GRAMS",1,"MILLIGRAMS",2,"MOLES",3,"MMOL",4,"PARTICLES CMPD",5,"PARTICLES ION",6,"BACK",0)
 :Lbl 1
@@ -25,10 +25,16 @@
 :Lbl S
 :If not(U):Then
 :ClrHome
-:Input "FORMULA:",Str0
+:Input "FORMULA (0=BACK):",Str0
+:If Str0="0":Then
+:~1->U
+:Return
+:End
+:If K<7:Then
 :Input "ION/ELEM OR 0:",Str4
 :Input "AMOUNT:",X
 :Input "G/ML OR 0:",Y
+:End
 :End
 :prgmFPAR
 :If E:Then
@@ -36,6 +42,11 @@
 :Return
 :End
 :M->T
+:If K=7:Then
+:ClrHome
+:Disp "MOLAR MASS",M
+:Return
+:End
 :L4->L6
 :1->Q
 :If Str4!="0":Then

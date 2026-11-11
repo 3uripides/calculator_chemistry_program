@@ -1,5 +1,5 @@
 :If not(U):ClrHome
-:If U:Goto S
+:If U or K:Goto S
 :Menu("DENSITY","D=M/V",1,"DISPLACEMENT",2,"M=D*V",3,"V=M/D",4,"BACK",0)
 :Lbl 1
 :1->K
@@ -19,7 +19,11 @@
 :Lbl S
 :If K=1:Then
 :If not(U):Then
-:Input "MASS:",M
+:Input "MASS (0=BACK):",M
+:If not(M):Then
+:~1->U
+:Return
+:End
 :Input "VOLUME:",V
 :End
 :M/V->D
@@ -27,7 +31,11 @@
 :End
 :If K=2:Then
 :If not(U):Then
-:Input "MASS:",M
+:Input "MASS (0=BACK):",M
+:If not(M):Then
+:~1->U
+:Return
+:End
 :Input "START VOL:",A
 :Input "END VOL:",B
 :End
@@ -37,7 +45,11 @@
 :End
 :If K=3:Then
 :If not(U):Then
-:Input "DENSITY:",D
+:Input "DENSITY (0=BACK):",D
+:If not(D):Then
+:~1->U
+:Return
+:End
 :Input "VOLUME:",V
 :End
 :D*V->M
@@ -45,7 +57,11 @@
 :End
 :If K=4:Then
 :If not(U):Then
-:Input "MASS:",M
+:Input "MASS (0=BACK):",M
+:If not(M):Then
+:~1->U
+:Return
+:End
 :Input "DENSITY:",D
 :End
 :M/D->V

@@ -1,50 +1,64 @@
 :Lbl M
 :0->U
 :ClrHome
-:Menu("CHEM 101","BASICS",1,"MOLES",2,"ATOMS",3,"LIGHT",4,"ELECTRONS",5,"EXAM 3",6,"QUIT",Q)
+:Menu("I NEED","AMOUNT MOL G #",1,"MOLAR MASS / %",2,"MASS VOL DENSITY",3,"ATOM / ELEMENT",4,"LIGHT ENERGY UNITS",5,"ELECTRONS BONDS",6,"QUIT",Q)
 :Lbl 1
-:Menu("BASICS","UNITS",A,"DENSITY",B,"ENERGY KWH",C,"MASS CONSERV",D,"BACK",M)
-:Lbl A:prgmUNITS:Goto R1
-:Lbl B:prgmDENS:Goto R1
-:Lbl C:prgmENERGY:Goto R1
-:Lbl D:prgmMASSC:Goto R1
+:Menu("I HAVE","GRAMS",1A,"MILLIGRAMS",1B,"MOLES",1C,"MMOL",1D,"FORMULA UNITS",1E,"ATOMS OR IONS",1F,"BACK",M)
+:Lbl 1A:1->K:prgmIONS:Goto R1
+:Lbl 1B:2->K:prgmIONS:Goto R1
+:Lbl 1C:3->K:prgmIONS:Goto R1
+:Lbl 1D:4->K:prgmIONS:Goto R1
+:Lbl 1E:5->K:prgmIONS:Goto R1
+:Lbl 1F:6->K:prgmIONS:Goto R1
 :Lbl R1:prgmWAIT:If K=45:Goto M
 :Goto 1
 :Lbl 2
-:Menu("MOLES","MOLES+ATOMS",E,"FORMULA MOLES",F,"FORMULA RATIO",G,"BACK",M)
-:Lbl E:prgmMOLES:Goto R2
-:Lbl F:prgmFORM:Goto R2
-:Lbl G:prgmRATIO:Goto R2
+:Menu("MOLAR MASS / %","MOLAR MASS",2A,"% OF EACH ELEM",2B,"G OF ELEMENT",2C,"MASSES TO FORMULA",2D,"ATOMS IN COMPOUND",2E,"BACK",M)
+:Lbl 2A:7->K:prgmIONS:Goto R2
+:Lbl 2B:1->K:prgmPCT:Goto R2
+:Lbl 2C:2->K:prgmPCT:Goto R2
+:Lbl 2D:0->K:prgmRATIO:Goto R2
+:Lbl 2E:0->K:prgmFORM:Goto R2
 :Lbl R2:prgmWAIT:If K=45:Goto M
 :Goto 2
 :Lbl 3
-:Menu("ATOMS","ATOMS+IONS",H,"ISOTOPES",I,"TRENDS",J,"IE JUMP",K,"BACK",M)
-:Lbl H:prgmATOMS:Goto R3
-:Lbl I:prgmISOTOPE:Goto R3
-:Lbl J:prgmTREND:Goto R3
-:Lbl K:prgmIEJUMP:Goto R3
+:Menu("I HAVE","DENSITY: M AND V",3A,"DENSITY: DISPLACE",3B,"MASS: D AND V",3C,"VOLUME: M AND D",3D,"MASS CONSERV",3E,"SAME ATOMS",3F,"BACK",M)
+:Lbl 3A:1->K:prgmDENS:Goto R3
+:Lbl 3B:2->K:prgmDENS:Goto R3
+:Lbl 3C:3->K:prgmDENS:Goto R3
+:Lbl 3D:4->K:prgmDENS:Goto R3
+:Lbl 3E:0->K:prgmMASSC:Goto R3
+:Lbl 3F:0->K:prgmMOLES:Goto R3
 :Lbl R3:prgmWAIT:If K=45:Goto M
 :Goto 3
 :Lbl 4
-:Menu("LIGHT","LIGHT",L,"BOHR MODEL",N,"BACK",M)
-:Lbl L:prgmLIGHT:Goto R4
-:Lbl N:prgmBOHR:Goto R4
+:Menu("ATOM / ELEMENT","P N E COUNTS",4A,"SYMBOL+MASS NO",4B,"ID: GRAMS+ATOMS",4C,"ISOTOPES",4D,"TRENDS",4E,"IE JUMP",4F,"BACK",M)
+:Lbl 4A:1->K:prgmATOMS:Goto R4
+:Lbl 4B:2->K:prgmATOMS:Goto R4
+:Lbl 4C:4->K:prgmMOLES:Goto R4
+:Lbl 4D:0->K:prgmISOTOPE:Goto R4
+:Lbl 4E:0->K:prgmTREND:Goto R4
+:Lbl 4F:0->K:prgmIEJUMP:Goto R4
 :Lbl R4:prgmWAIT:If K=45:Goto M
 :Goto 4
 :Lbl 5
-:Menu("ELECTRONS","CONFIG",O,"SUBSHELL COUNT",P,"ENERGY ORDER",T,"BACK",M)
-:Lbl O:prgmCONFIG:Goto R5
-:Lbl P:prgmCOUNT:Goto R5
-:Lbl T:prgmORDER:Goto R5
+:Menu("LIGHT ENERGY UNITS","LIGHT: WAVELENGTH",5A,"LIGHT: FREQUENCY",5B,"LIGHT: KJ/MOL",5C,"BOHR N TO N",5D,"KWH FROM COST",5E,"UNIT CONVERT",5F,"BACK",M)
+:Lbl 5A:1->K:prgmLIGHT:Goto R5
+:Lbl 5B:2->K:prgmLIGHT:Goto R5
+:Lbl 5C:3->K:prgmLIGHT:Goto R5
+:Lbl 5D:0->K:prgmBOHR:Goto R5
+:Lbl 5E:0->K:prgmENERGY:Goto R5
+:Lbl 5F:0->K:prgmUNITS:Goto R5
 :Lbl R5:prgmWAIT:If K=45:Goto M
 :Goto 5
 :Lbl 6
-:Menu("EXAM 3","PERCENT COMP",E1,"IONS+PARTICLES",E2,"DISSOLVE",E3,"VALENCE E-",E4,"BOND TOOLS",E5,"BACK",M)
-:Lbl E1:prgmPCT:Goto R6
-:Lbl E2:prgmIONS:Goto R6
-:Lbl E3:prgmDISS:Goto R6
-:Lbl E4:prgmVALE:Goto R6
-:Lbl E5:prgmBONDS:Goto R6
+:Menu("ELECTRONS BONDS","CONFIG",6A,"SUBSHELL COUNT",6B,"ENERGY ORDER",6C,"VALENCE E-",6D,"BOND TOOLS",6E,"DISSOLVE",6F,"BACK",M)
+:Lbl 6A:0->K:prgmCONFIG:Goto R6
+:Lbl 6B:0->K:prgmCOUNT:Goto R6
+:Lbl 6C:0->K:prgmORDER:Goto R6
+:Lbl 6D:0->K:prgmVALE:Goto R6
+:Lbl 6E:0->K:prgmBONDS:Goto R6
+:Lbl 6F:0->K:prgmDISS:Goto R6
 :Lbl R6:prgmWAIT:If K=45:Goto M
 :Goto 6
 :Lbl Q

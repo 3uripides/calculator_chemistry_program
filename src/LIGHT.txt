@@ -1,5 +1,5 @@
 :If not(U):ClrHome
-:If U:Goto S
+:If U or K:Goto S
 :Menu("LIGHT","WAVELENGTH NM",1,"FREQUENCY HZ",2,"KJ PER MOL",3,"BACK",0)
 :Lbl 1
 :1->K
@@ -18,9 +18,16 @@
 :3|E8->C
 :6.022|E23->A
 :If not(U):Then
-:If K=1:Input "WAVELENGTH NM:",W
-:If K=2:Input "FREQUENCY HZ:",F
-:If K=3:Input "KJ PER MOL:",Q
+:0->W
+:0->F
+:0->Q
+:If K=1:Input "WAVELENGTH NM (0=BACK):",W
+:If K=2:Input "FREQUENCY HZ (0=BACK):",F
+:If K=3:Input "KJ PER MOL (0=BACK):",Q
+:If not(W+F+Q):Then
+:~1->U
+:Return
+:End
 :End
 :If K=1:Then
 :W*1|E~9->W

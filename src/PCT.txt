@@ -1,4 +1,4 @@
-:If U:Goto S
+:If U or K:Goto S
 :ClrHome
 :Menu("PERCENT COMP","ALL ELEMENTS",1,"GRAMS OF ELEMENT",2,"BACK",0)
 :Lbl 1
@@ -13,7 +13,11 @@
 :Lbl S
 :If not(U):Then
 :ClrHome
-:Input "FORMULA:",Str0
+:Input "FORMULA (0=BACK):",Str0
+:If Str0="0":Then
+:~1->U
+:Return
+:End
 :If K=2:Then
 :Input "GRAMS OF COMPOUND:",X
 :Input "ELEMENT:",Str4
