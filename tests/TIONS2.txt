@@ -1,0 +1,8 @@
+:1->U
+:ClrHome
+:1->K
+:"FeCl3"->Str0
+:"Cl"->Str4
+:50->X
+:0->Y
+:prgmIONS

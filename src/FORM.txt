@@ -5,13 +5,17 @@
 :1->W
 :While W=1
 :prgmGETM
-:Input "SUBSCRIPT:",S
+:Input "SUBSCRIPT (0=BACK):",S
+:If not(S):Then
+:~1->U
+:Return
+:End
 :T+M*S->T
 :Input "MORE PARTS? 1=YES",W
 :End
 :T->M
 :Disp "MOLAR MASS",M
-:Menu("GIVEN","MOLES",1,"GRAMS",2,"MOLECULES",3)
+:Menu("GIVEN","MOLES",1,"GRAMS",2,"MOLECULES",3,"BACK",0)
 :Lbl 1
 :1->K
 :Goto S
@@ -20,6 +24,10 @@
 :Goto S
 :Lbl 3
 :3->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
 :Lbl S
 :If not(U):Then
 :Input "AMOUNT:",X

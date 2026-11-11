@@ -1,0 +1,9 @@
+:If U=~1:Then
+:0->U
+:105->K
+:Return
+:End
+:Disp "ENTER=BACK","CLEAR=MAIN MENU"
+:Repeat K=45 or K=105
+:getKey->K
+:End

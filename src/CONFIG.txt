@@ -1,17 +1,25 @@
 :prgmPTAB
 :If not(U):ClrHome
 :If U:Goto S
-:Menu("CONFIG","ATOM OR ION",1,"FIND ELEMENT",2)
+:Menu("CONFIG","ATOM OR ION",1,"FIND ELEMENT",2,"BACK",0)
 :Lbl 1
 :1->K
 :Goto S
 :Lbl 2
 :2->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
 :Lbl S
 :If K=1:Then
 :If not(U):Then
 :Disp "E.G. AS FE3+ CL-"
-:Input "SPECIES:",Str6
+:Input "SPECIES (0=BACK):",Str6
+:If Str6="0":Then
+:~1->U
+:Return
+:End
 :End
 :Str6+" "->Str6
 :1->J
@@ -19,7 +27,11 @@
 :End
 :If K=2:Then
 :If not(U):Then
-:Input "NOBLE GAS OR 0:",Str1
+:Input "GAS 0=NONE Q=BACK:",Str1
+:If Str1="Q":Then
+:~1->U
+:Return
+:End
 :Input "E- AFTER IT:",D
 :End
 :If Str1="0":Then

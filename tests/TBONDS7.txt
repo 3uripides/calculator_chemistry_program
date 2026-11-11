@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:3->K
+:"N N 3 N N 2 C C C N N N"->Str6
+:prgmBONDS

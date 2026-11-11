@@ -1,0 +1,8 @@
+:1->U
+:ClrHome
+:1->K
+:"CH2F2"->Str0
+:"F"->Str4
+:19->X
+:0->Y
+:prgmIONS

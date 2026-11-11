@@ -1,0 +1,8 @@
+:1->U
+:ClrHome
+:3->K
+:"Ca(HCO3)2"->Str0
+:"O"->Str4
+:2->X
+:0->Y
+:prgmIONS

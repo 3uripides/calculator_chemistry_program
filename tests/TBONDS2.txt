@@ -1,0 +1,8 @@
+:1->U
+:ClrHome
+:5->K
+:"H 2.1 C 2.5 N 3 O 3.5"->Str6
+:prgmBONDS
+:2->K
+:"C H N H O H"->Str6
+:prgmBONDS

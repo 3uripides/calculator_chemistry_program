@@ -1,6 +1,6 @@
 :If not(U):ClrHome
 :If U:Goto S
-:Menu("ISOTOPES","AVG MASS",1,"MISSING ISOTOPE",2,"ABUNDANCE %",3,"ATOMS OF ISOTOPE",4)
+:Menu("ISOTOPES","AVG MASS",1,"MISSING ISOTOPE",2,"ABUNDANCE %",3,"ATOMS OF ISOTOPE",4,"BACK",0)
 :Lbl 1
 :1->K
 :Goto S
@@ -12,6 +12,10 @@
 :Goto S
 :Lbl 4
 :4->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
 :Lbl S
 :If K=1:Then
 :If not(U):Then

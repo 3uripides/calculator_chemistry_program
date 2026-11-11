@@ -20,9 +20,56 @@ Run `CHEM` on the calculator for the menu. It calls one solver per problem type.
 | TREND | ranks atomic/ionic size, first ionization energy, Zeff |
 | IEJUMP | successive ionization energies to valence electrons and element |
 | FORM | molar mass from a formula; moles, molecules, atoms of a compound |
+| WAIT | helper: result screen (ENTER=BACK, CLEAR=MAIN MENU) |
 | PTAB, ELEM, GETM, SPEC, CFG | helpers: periodic table + first ionization energies (86 elements, symbols uppercase), symbol lookup, species parser (`CA2+`), configuration engine |
 
-Exam 2 programs are under CHEM > MORE > EXAM 2 TOOLS.
+## Navigation
+
+```
+CHEM
++- BASICS      UNITS, DENSITY, ENERGY KWH, MASS CONSERV, BACK
++- MOLES       MOLES+ATOMS, FORMULA MOLES, FORMULA RATIO, BACK
++- ATOMS       ATOMS+IONS, ISOTOPES, TRENDS, IE JUMP, BACK
++- LIGHT       LIGHT, BOHR MODEL, BACK
++- ELECTRONS   CONFIG, SUBSHELL COUNT, ENERGY ORDER, BACK
++- EXAM 3      (placeholder, BACK)
++- QUIT
+```
+
+Back convention (TI-BASIC has no comments, so it is documented here):
+- Every Menu ends with BACK (main menu: QUIT). In a solver, BACK is `"BACK",0` pointing at `Lbl 0 : ~1->U : Return` placed just before `Lbl S`.
+- A solver without a menu accepts 0 at its first prompt (`"VALUE (0=BACK):"`); the prompt text says so. Text prompts use the string "0" (CONFIG gas prompt uses "Q" because 0 means none; IEJUMP uses `{0}`). Both do `~1->U : Return`.
+- After every solver CHEM runs `prgmWAIT`: it shows "ENTER=BACK, CLEAR=MAIN MENU" and waits with getKey. ENTER returns to the category menu (so the next tool is one pick away), CLEAR to the main menu. If the solver set `U=~1` (BACK), WAIT resets `U` to 0 and skips the wait, returning straight to the category menu.
+- Test mode is unchanged: `U=1` skips menus and prompts (and the BACK checks, which sit inside `If not(U)`).
+
+### Adding a solver (new `src/NAME.txt` + one menu entry)
+Solver boilerplate:
+```
+:If not(U):ClrHome
+:If U:Goto S
+:Menu("TITLE","OPTION A",1,"OPTION B",2,"BACK",0)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
+:Lbl S
+:If not(U):Then
+:Input "FIRST (0=BACK):",A
+:If not(A):Then
+:~1->U
+:Return
+:End
+...other Input lines...
+:End
+(compute and Disp, never Pause; WAIT does it)
+```
+No-menu solvers omit the Menu/Lbl block and keep the 0 check on the first Input. Never `Stop` or `Pause` at the end, and never use `U` for anything but test mode/back.
+Menu entry in `src/CHEM.txt`, 2 edits: add `,"NAME",E1` before `"BACK"` in the category Menu line (max 7 items per Menu), and add one line `:Lbl E1:prgmNAME:Goto R6` below it (use `R<category number>`; the EXAM 3 category is 6, replace its `"NONE YET",6,` entry). Labels must be unique, 1-2 characters.
 
 Constants: h = 6.63E-34, c = 3E8, N_A = 6.022E23, Rydberg energy 2.18E-18 J (from the exam's answer key).
 
@@ -36,3 +83,8 @@ Constants: h = 6.63E-34, c = 3E8, N_A = 6.022E23, Rydberg energy 2.18E-18 J (fro
 
 ## Testing
 CEmu can send files, launch, and screenshot, but cannot press keys. Solvers skip their prompts when `U=1`, so each test sets `U` and the inputs, then calls the solver. Menus and `Input` prompts are not exercised by tests.
+
+## Input convention for formula/species Strs (BONDS, DISS, PCT, IONS, VALE, CONFIG, FORM)
+Type everything in UPPERCASE (the calculator has no lowercase). Element symbols are matched against an uppercase table. DISS prints charges with a space ("CO 2+" = cobalt ion, "SO4 2-") so cobalt vs CO2 cannot be confused.
+Two-letter ambiguity: `CO` and `CS` are read as carbon+oxygen/sulfur when followed by a digit or the end (DISS: `CO2` -> molecular, `CS2` -> molecular) and as cobalt/cesium otherwise (`CO(NO3)2`). Elsewhere a two-letter symbol is tried first, so write cobalt compounds with the metal first followed by `(` or an anion.
+BONDS rules (checked against the Exam 3 practice key Q13/Q17/Q19/Q28/Q35/Q36 and review Q18-Q20): smaller atom = more electronegative = shorter and stronger single bond; higher bond order = shorter and stronger.

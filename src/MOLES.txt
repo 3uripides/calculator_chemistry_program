@@ -1,7 +1,7 @@
 :prgmPTAB
 :If not(U):ClrHome
 :If U:Goto S
-:Menu("MOLES","FROM GRAMS",1,"FROM MOLES",2,"FROM ATOMS",3,"IDENTIFY",4,"SAME ATOMS",5)
+:Menu("MOLES","FROM GRAMS",1,"FROM MOLES",2,"FROM ATOMS",3,"IDENTIFY",4,"SAME ATOMS",5,"BACK",0)
 :Lbl 1
 :1->K
 :Goto S
@@ -16,6 +16,10 @@
 :Goto S
 :Lbl 5
 :5->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
 :Lbl S
 :6.022|E23->A
 :If K=4:Goto I

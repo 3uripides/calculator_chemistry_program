@@ -1,0 +1,4 @@
+:1->U
+:ClrHome
+:"CO(NO3)2"->Str6
+:prgmDISS

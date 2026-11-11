@@ -1,7 +1,11 @@
 :If not(U):Then
 :ClrHome
 :Disp "E.G. 2S 1S 2P 3D 4S"
-:Input "SUBSHELLS:",Str1
+:Input "SUBSHELLS (0=BACK):",Str1
+:If Str1="0":Then
+:~1->U
+:Return
+:End
 :End
 :Str1+" "->Str1
 :length(Str1)/3->C

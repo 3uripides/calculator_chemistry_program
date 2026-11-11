@@ -1,6 +1,10 @@
 :If not(U):Then
 :ClrHome
-:Input "COST:",A
+:Input "COST (0=BACK):",A
+:If not(A):Then
+:~1->U
+:Return
+:End
 :Input "PRICE PER KWH:",B
 :End
 :A/B->K

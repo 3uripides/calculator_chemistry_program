@@ -1,0 +1,8 @@
+:1->U
+:ClrHome
+:2->K
+:"Na2SO3"->Str0
+:"Na"->Str4
+:99.6->X
+:0->Y
+:prgmIONS

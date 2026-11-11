@@ -1,0 +1,80 @@
+:prgmPTAB
+:If U:Goto S
+:Menu("VALENCE E-","TOTAL E- AND ODD",1,"FORMAL CHARGE",2,"BACK",0)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
+:Lbl S
+:If not(U):Then
+:ClrHome
+:If K=1:Then
+:Disp "E.G. C H2 CL2","(SPACE BETWEEN ATOMS)"
+:Input "ATOMS (0=BACK):",Str6
+:If Str6="0":Then
+:~1->U
+:Return
+:End
+:Input "CHARGE (0=NONE):",Q
+:End
+:If K=2:Then
+:Disp "ONE ATOM E.G. S"
+:Input "ATOM (0=BACK):",Str6
+:If Str6="0":Then
+:~1->U
+:Return
+:End
+:Input "NONBONDING E-:",N
+:Input "BONDS (DOUBLE=2):",B
+:End
+:End
+:If K=2:0->Q
+:Str6+" "->Str6
+:1->J
+:0->T
+:0->Y
+:While J<length(Str6)
+:inString(Str6," ",J)->R
+:If R=J:Then
+:J+1->J
+:Else
+:sub(Str6,J,R-J)->Str7
+:R+1->J
+:1+(inString("ABCDEFGHIJKLMNOPQRSTUVWXYZ",sub(Str7+" ",2,1))>0)->L
+:sub(Str7,1,L)->Str1
+:prgmELEM
+:If Z=0 and L=2:Then
+:1->L
+:sub(Str7,1,1)->Str1
+:prgmELEM
+:End
+:1->D
+:If length(Str7)>L:expr(sub(Str7,L+1,length(Str7)-L))->D
+:Z-sum((Z>{2,10,18,36,54})*{2,8,8,18,18})->W
+:1+sum(Z>{2,10,18,36,54})->P
+:W->V
+:If P>3 and W>2:2->V
+:If P>3 and P<6 and W>12:W-10->V
+:If P>5 and W>26:W-24->V
+:T+V*D->T
+:Y+D->Y
+:End
+:End
+:ClrHome
+:If K=2:Then
+:Disp "VALENCE E- "+toString(T),"NONBOND "+toString(N),"BONDS "+toString(B),"FC=V-N-B","FC "+toString(T-N-B)
+:Else
+:T-Q->T
+:Disp "TOTAL VALENCE E-",T
+:If fPart(T/2):Then
+:Disp "ODD: FREE RADICAL"
+:Else
+:Disp "EVEN, PAIRS "+toString(T/2)
+:End
+:If Y=1:Disp "LEWIS SYMBOL DOTS "+toString(T)
+:End

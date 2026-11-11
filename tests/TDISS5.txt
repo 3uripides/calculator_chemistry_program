@@ -1,0 +1,4 @@
+:1->U
+:ClrHome
+:"CH3OH"->Str6
+:prgmDISS

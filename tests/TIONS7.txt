@@ -1,0 +1,8 @@
+:1->U
+:ClrHome
+:5->K
+:"C6H14"->Str0
+:"0"->Str4
+:5.33|E22->X
+:0.655->Y
+:prgmIONS

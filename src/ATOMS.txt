@@ -1,12 +1,16 @@
 :prgmPTAB
 :If not(U):ClrHome
 :If U:Goto S
-:Menu("ATOMS","PROTONS+NEUTRONS",1,"SYMBOL+MASS NO",2)
+:Menu("ATOMS","PROTONS+NEUTRONS",1,"SYMBOL+MASS NO",2,"BACK",0)
 :Lbl 1
 :1->K
 :Goto S
 :Lbl 2
 :2->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
 :Lbl S
 :If K=1:Then
 :If not(U):Then

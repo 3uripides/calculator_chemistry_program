@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:1->K
+:"(NH2)2CO"->Str0
+:prgmPCT

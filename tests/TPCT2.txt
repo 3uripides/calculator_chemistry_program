@@ -1,0 +1,7 @@
+:1->U
+:ClrHome
+:2->K
+:"NaCl"->Str0
+:15->X
+:"Na"->Str4
+:prgmPCT

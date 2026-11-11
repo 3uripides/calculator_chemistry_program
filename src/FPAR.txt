@@ -1,0 +1,56 @@
+:If dim(L1)!=86:prgmPTAB
+:0*L1->L4
+:{0,0,0,0,0,0,0,0,0,0}->L5
+:0->E
+:1->P
+:0->D
+:1->N
+:length(Str0)->I
+:While I>0 and not(E)
+:sub(Str0,I,1)->Str3
+:inString("0123456789",Str3)->C
+:If C>0:Then
+:0->N
+:1->B
+:While I>0 and inString("0123456789",sub(Str0,I,1))>0
+:N+B*(inString("0123456789",sub(Str0,I,1))-1)->N
+:10*B->B
+:I-1->I
+:End
+:Else
+:If Str3=")":Then
+:D+1->D
+:N->L5(D)
+:P*N->P
+:1->N
+:I-1->I
+:Else
+:If Str3="(":Then
+:If D<1:1->E
+:If not(E):Then
+:P/L5(D)->P
+:D-1->D
+:End
+:I-1->I
+:Else
+:inString("abcdefghijklmnopqrstuvwxyz",Str3)->C
+:If C>0 and I>1:Then
+:sub(Str0,I-1,1)+sub("ABCDEFGHIJKLMNOPQRSTUVWXYZ",C,1)->Str1
+:I-2->I
+:Else
+:Str3->Str1
+:I-1->I
+:End
+:prgmELEM
+:If M=0:Then
+:1->E
+:Else
+:L4(Z)+N*P->L4(Z)
+:1->N
+:End
+:End
+:End
+:End
+:End
+:If D!=0:1->E
+:sum(L4*L1)->M

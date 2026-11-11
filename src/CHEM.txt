@@ -1,58 +1,52 @@
-:0->U
 :Lbl M
+:0->U
 :ClrHome
-:Menu("CHEM 101","UNITS",A,"DENSITY",B,"MOLES",C,"ISOTOPES",D,"FORMULA RATIOS",E,"LIGHT",F,"MORE",G)
-:Lbl A
-:prgmUNITS
-:Goto X
-:Lbl B
-:prgmDENS
-:Goto X
-:Lbl C
-:prgmMOLES
-:Goto X
-:Lbl D
-:prgmISOTOPE
-:Goto X
-:Lbl E
-:prgmRATIO
-:Goto X
-:Lbl F
-:prgmLIGHT
-:Goto X
-:Lbl G
-:Menu("CHEM 101","BOHR MODEL",H,"ATOMS AND IONS",I,"ENERGY KWH",J,"MASS CONSERVATION",K,"EXAM 2 TOOLS",Y,"BACK",M)
-:Lbl H
-:prgmBOHR
-:Goto X
-:Lbl I
-:prgmATOMS
-:Goto X
-:Lbl J
-:prgmENERGY
-:Goto X
-:Lbl K
-:prgmMASSC
-:Goto X
-:Lbl Y
-:Menu("EXAM 2","CONFIG",L,"SUBSHELL COUNT",N,"ENERGY ORDER",O,"TRENDS",P,"IE JUMP",Q,"FORMULA MOLES",R,"BACK",M)
-:Lbl L
-:prgmCONFIG
-:Goto X
-:Lbl N
-:prgmCOUNT
-:Goto X
-:Lbl O
-:prgmORDER
-:Goto X
-:Lbl P
-:prgmTREND
-:Goto X
+:Menu("CHEM 101","BASICS",1,"MOLES",2,"ATOMS",3,"LIGHT",4,"ELECTRONS",5,"EXAM 3",6,"QUIT",Q)
+:Lbl 1
+:Menu("BASICS","UNITS",A,"DENSITY",B,"ENERGY KWH",C,"MASS CONSERV",D,"BACK",M)
+:Lbl A:prgmUNITS:Goto R1
+:Lbl B:prgmDENS:Goto R1
+:Lbl C:prgmENERGY:Goto R1
+:Lbl D:prgmMASSC:Goto R1
+:Lbl R1:prgmWAIT:If K=45:Goto M
+:Goto 1
+:Lbl 2
+:Menu("MOLES","MOLES+ATOMS",E,"FORMULA MOLES",F,"FORMULA RATIO",G,"BACK",M)
+:Lbl E:prgmMOLES:Goto R2
+:Lbl F:prgmFORM:Goto R2
+:Lbl G:prgmRATIO:Goto R2
+:Lbl R2:prgmWAIT:If K=45:Goto M
+:Goto 2
+:Lbl 3
+:Menu("ATOMS","ATOMS+IONS",H,"ISOTOPES",I,"TRENDS",J,"IE JUMP",K,"BACK",M)
+:Lbl H:prgmATOMS:Goto R3
+:Lbl I:prgmISOTOPE:Goto R3
+:Lbl J:prgmTREND:Goto R3
+:Lbl K:prgmIEJUMP:Goto R3
+:Lbl R3:prgmWAIT:If K=45:Goto M
+:Goto 3
+:Lbl 4
+:Menu("LIGHT","LIGHT",L,"BOHR MODEL",N,"BACK",M)
+:Lbl L:prgmLIGHT:Goto R4
+:Lbl N:prgmBOHR:Goto R4
+:Lbl R4:prgmWAIT:If K=45:Goto M
+:Goto 4
+:Lbl 5
+:Menu("ELECTRONS","CONFIG",O,"SUBSHELL COUNT",P,"ENERGY ORDER",T,"BACK",M)
+:Lbl O:prgmCONFIG:Goto R5
+:Lbl P:prgmCOUNT:Goto R5
+:Lbl T:prgmORDER:Goto R5
+:Lbl R5:prgmWAIT:If K=45:Goto M
+:Goto 5
+:Lbl 6
+:Menu("EXAM 3","PERCENT COMP",E1,"IONS+PARTICLES",E2,"DISSOLVE",E3,"VALENCE E-",E4,"BOND TOOLS",E5,"BACK",M)
+:Lbl E1:prgmPCT:Goto R6
+:Lbl E2:prgmIONS:Goto R6
+:Lbl E3:prgmDISS:Goto R6
+:Lbl E4:prgmVALE:Goto R6
+:Lbl E5:prgmBONDS:Goto R6
+:Lbl R6:prgmWAIT:If K=45:Goto M
+:Goto 6
 :Lbl Q
-:prgmIEJUMP
-:Goto X
-:Lbl R
-:prgmFORM
-:Lbl X
-:Pause
-:Goto M
+:ClrHome
+:Stop

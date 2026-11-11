@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:1->K
+:"PtCl2(NH3)2"->Str0
+:prgmPCT

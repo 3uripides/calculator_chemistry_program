@@ -1,0 +1,7 @@
+:1->U
+:ClrHome
+:2->K
+:"S"->Str6
+:4->N
+:2->B
+:prgmVALE

@@ -2,7 +2,11 @@
 :If not(U):Then
 :ClrHome
 :Disp "KJ OR MJ PER MOL"
-:Input "IE LIST {A,B,C}:",L6
+:Input "LIST OR {0}=BACK:",L6
+:If L6(1)=0:Then
+:~1->U
+:Return
+:End
 :End
 :dim(L6)->C
 :0->T

@@ -1,0 +1,4 @@
+:1->U
+:ClrHome
+:"AL(HSO4)3"->Str6
+:prgmDISS

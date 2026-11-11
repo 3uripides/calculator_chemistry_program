@@ -1,6 +1,6 @@
 :prgmPTAB
 :If U:Goto S
-:Menu("TRENDS","SIZE",1,"IONIZATION E",2,"ZEFF",3)
+:Menu("TRENDS","SIZE",1,"IONIZATION E",2,"ZEFF",3,"BACK",0)
 :Lbl 1
 :1->G
 :Goto S
@@ -9,11 +9,19 @@
 :Goto S
 :Lbl 3
 :3->G
+:Goto S
+:Lbl 0
+:~1->U
+:Return
 :Lbl S
 :If not(U):Then
 :ClrHome
 :Disp "E.G. K+ CL- AR CA2+"
-:Input "SPECIES:",Str6
+:Input "SPECIES (0=BACK):",Str6
+:If Str6="0":Then
+:~1->U
+:Return
+:End
 :End
 :Str6+" "->Str6
 :1->J

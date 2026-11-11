@@ -1,0 +1,86 @@
+:prgmPTAB
+:If not(U):Then
+:ClrHome
+:Disp "E.G. AL2(SO4)3 NH4NO3","MG3(PO4)2 CH3OH"
+:Input "FORMULA (0=BACK):",Str6
+:If Str6="0":Then
+:~1->U
+:Return
+:End
+:End
+:Str6+"   "->Str6
+:1->J
+:0->Y
+:If sub(Str6,1,1)="(":Then
+:inString(Str6,")")->R
+:sub(Str6,2,R-2)->Str1
+:R+1->J
+:1->Y
+:Else
+:If sub(Str6,1,3)="NH4":Then
+:"NH4"->Str1
+:4->J
+:1->Y
+:Else
+:1+(inString("ABCDEFGHIJKLMNOPQRSTUVWXYZ",sub(Str6,2,1))>0)->L
+:If (sub(Str6,1,2)="CO" or sub(Str6,1,2)="CS") and inString("123456789 ",sub(Str6,3,1))>0:1->L
+:sub(Str6,1,L)->Str1
+:prgmELEM
+:If Z=0 and L=2:Then
+:1->L
+:sub(Str6,1,1)->Str1
+:prgmELEM
+:End
+:L+1->J
+:If Z=0 or sum(Z={1,2,5,6,7,8,9,10,14,15,16,17,18,32,33,34,35,36,52,53,54,85,86}):Then
+:ClrHome
+:If Z=1:Then
+:Disp "MOLECULAR ACID","COVALENT BONDS","IONIZES: ELECTROLYTE"
+:Else
+:Disp "MOLECULAR","COVALENT BONDS ONLY","NON-ELECTROLYTE"
+:End
+:Return
+:End
+:End
+:End
+:1->A
+:inString("123456789",sub(Str6,J,1))->T
+:If T:Then
+:T->A
+:J+1->J
+:End
+:sub(Str6,J,length(Str6)-J-2)->Str2
+:1->B
+:If sub(Str2,1,1)="(":Then
+:inString(Str2,")")->R
+:sub(Str2,2,R-2)->Str3
+:inString("123456789",sub(Str2+" ",R+1,1))->T
+:If T:T->B
+:Else
+:Str2->Str3
+:End
+:"NO3   NO2   SO4   SO3   HSO4  HSO3  HCO3  CO3   PO4   HPO4  H2PO4 OH    CN    SCN   CLO   CLO2  CLO3  CLO4  C2H3O2MNO4  CRO4  CR2O7 C2O4  F     CL    BR    I     O     S     N     P     SE    H     "->Str5
+:{1,1,2,2,1,1,1,2,3,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,2,3,3,2,1}->L4
+:inString(Str5,sub(Str3+"      ",1,6))->T
+:If not(T):Then
+:1+(inString("ABCDEFGHIJKLMNOPQRSTUVWXYZ",sub(Str3+" ",2,1))>0)->L
+:inString("123456789",sub(Str3+" ",L+1,1))->T
+:If T:T->B
+:sub(Str3,1,L)->Str3
+:inString(Str5,sub(Str3+"      ",1,6))->T
+:End
+:If not(T):Then
+:Disp "UNKNOWN ANION"
+:Return
+:End
+:If T<134:1->Y
+:L4((T+5)/6)->C
+:B*C/A->Q
+:Str1+" "+toString(Q)+"+"->Str4
+:If Q=1:Str1+"+"->Str4
+:Str3+" "+toString(C)+"-"->Str0
+:If C=1:Str3+"-"->Str0
+:ClrHome
+:Disp "CATION "+toString(A)+" "+Str4,"ANION "+toString(B)+" "+Str0,"IONS PER UNIT "+toString(A+B),"IONIC (CATION-ANION)"
+:If Y:Disp "+ COVALENT IN POLY ION"
+:Disp "STRONG ELECTROLYTE"

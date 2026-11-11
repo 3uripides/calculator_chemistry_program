@@ -1,0 +1,8 @@
+:1->U
+:ClrHome
+:5->K
+:"CO2"->Str0
+:"0"->Str4
+:1.07|E24->X
+:0->Y
+:prgmIONS

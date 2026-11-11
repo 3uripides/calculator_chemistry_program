@@ -1,0 +1,4 @@
+:1->U
+:ClrHome
+:"MG3(PO4)2"->Str6
+:prgmDISS

@@ -1,6 +1,6 @@
 :If not(U):ClrHome
 :If U:Goto S
-:Menu("LIGHT","WAVELENGTH NM",1,"FREQUENCY HZ",2,"KJ PER MOL",3)
+:Menu("LIGHT","WAVELENGTH NM",1,"FREQUENCY HZ",2,"KJ PER MOL",3,"BACK",0)
 :Lbl 1
 :1->K
 :Goto S
@@ -9,6 +9,10 @@
 :Goto S
 :Lbl 3
 :3->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
 :Lbl S
 :6.63|E~34->H
 :3|E8->C

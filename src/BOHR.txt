@@ -1,6 +1,10 @@
 :If not(U):Then
 :ClrHome
-:Input "START N:",A
+:Input "START N (0=BACK):",A
+:If not(A):Then
+:~1->U
+:Return
+:End
 :Input "END N:",B
 :End
 :2.18|E~18->R

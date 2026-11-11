@@ -1,4 +1,4 @@
-# Usage: .\test.ps1 TNAME [TNAME...]  -- boots CEmu once, sends src programs, then for each test:
+# Usage: .\test.ps1 TNAME[:WAITSECS] [...]  (default wait 5 s; slow sorts like TTREND1 need ~30)  -- boots CEmu once, sends src programs, then for each test:
 # sends tests\TNAME, launches it and saves docs\TNAME.png. A test that errors may leave the emulator
 # on the error screen; rerun that test alone.
 $exe  = "$env:LOCALAPPDATA\Programs\CEmu\CEmu.exe"
@@ -13,9 +13,9 @@ foreach ($p in (Get-ChildItem "$root\src\*.txt" | ForEach-Object { $_.BaseName.T
   $a = @('--id','cemu'); if (-not $first) { $a += '--no-reset' }; $a += '--send'; $a += "$root\build\send\$p.8xp"
   Cmd $a; Start-Sleep ($(if ($first) { 5 } else { 2 })); $first = $false
 }
-foreach ($n in $args) {
+foreach ($a0 in $args) {  $n,$w = $a0 -split ':'; if (-not $w) { $w = 5 }
   Cmd @('--id','cemu','--no-reset','--send',"$root\build\tests\$n.8xp"); Start-Sleep 2
-  Cmd @('--id','cemu','--launch',$n); Start-Sleep 5
+  Cmd @('--id','cemu','--launch',$n); Start-Sleep $w
   Cmd @('--id','cemu','--screenshot',"$root\docs\$n.png"); Start-Sleep 2
   "docs\$n.png"
 }

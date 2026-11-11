@@ -1,0 +1,67 @@
+:If U:Goto S
+:ClrHome
+:Menu("IONS","GRAMS",1,"MILLIGRAMS",2,"MOLES",3,"MMOL",4,"PARTICLES CMPD",5,"PARTICLES ION",6,"BACK",0)
+:Lbl 1
+:1->K
+:Goto S
+:Lbl 2
+:2->K
+:Goto S
+:Lbl 3
+:3->K
+:Goto S
+:Lbl 4
+:4->K
+:Goto S
+:Lbl 5
+:5->K
+:Goto S
+:Lbl 6
+:6->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
+:Lbl S
+:If not(U):Then
+:ClrHome
+:Input "FORMULA:",Str0
+:Input "ION/ELEM OR 0:",Str4
+:Input "AMOUNT:",X
+:Input "G/ML OR 0:",Y
+:End
+:prgmFPAR
+:If E:Then
+:Disp "BAD FORMULA"
+:Return
+:End
+:M->T
+:L4->L6
+:1->Q
+:If Str4!="0":Then
+:Str4->Str0
+:prgmFPAR
+:If E:Then
+:Disp "BAD ION"
+:Return
+:End
+:If sum(L4>0)=1:Then
+:For(J,1,86)
+:If L4(J)>0:L6(J)/L4(J)->Q
+:End
+:Else
+:If not(U):Input "PER FORMULA:",S
+:S->Q
+:End
+:End
+:6.022|E23->A
+:If K=1:X/T->R
+:If K=2:X/1000/T->R
+:If K=3:X->R
+:If K=4:X/1000->R
+:If K=5:X/A->R
+:If K=6:X/A/Q->R
+:ClrHome
+:Disp "MOL CMPD "+toString(R),"MMOL CMPD "+toString(R*1000),"GRAMS "+toString(R*T),"UNITS "+toString(R*A)
+:If Str4!="0":Disp "PER FORMULA "+toString(Q),"MOL ION "+toString(R*Q),"MMOL ION "+toString(R*Q*1000),"PARTICLES "+toString(R*Q*A)
+:If Y>0:Disp "ML "+toString(R*T/Y)

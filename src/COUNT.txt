@@ -1,6 +1,10 @@
 :If not(U):Then
 :ClrHome
-:Input "SHELL N:",N
+:Input "SHELL N (0=BACK):",N
+:If not(N):Then
+:~1->U
+:Return
+:End
 :Input "SUBSHELL OR 0:",Str1
 :End
 :Disp "SUBSHELLS "+toString(N),"ORBITALS "+toString(N^2),"MAX E- "+toString(2*N^2)

@@ -1,6 +1,6 @@
 :If not(U):ClrHome
 :If U:Goto S
-:Menu("DENSITY","D=M/V",1,"DISPLACEMENT",2,"M=D*V",3,"V=M/D",4)
+:Menu("DENSITY","D=M/V",1,"DISPLACEMENT",2,"M=D*V",3,"V=M/D",4,"BACK",0)
 :Lbl 1
 :1->K
 :Goto S
@@ -12,6 +12,10 @@
 :Goto S
 :Lbl 4
 :4->K
+:Goto S
+:Lbl 0
+:~1->U
+:Return
 :Lbl S
 :If K=1:Then
 :If not(U):Then

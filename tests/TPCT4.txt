@@ -1,0 +1,5 @@
+:1->U
+:ClrHome
+:1->K
+:"C7H5N3O6"->Str0
+:prgmPCT
